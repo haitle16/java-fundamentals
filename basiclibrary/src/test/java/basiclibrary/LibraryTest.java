@@ -40,15 +40,33 @@ public class LibraryTest {
     }
 
     @Test public void testCalcAoA(){
-        int[][] arrayOfArrays = {
+        int[][] arrayOfArrays1 = {
+                {42, 50, 47, 31, 58, 60, 40},
                 {66, 64, 58, 65, 71, 57, 60},
                 {57, 65, 65, 70, 72, 65, 51},
                 {55, 54, 60, 53, 59, 57, 61},
-                {65, 56, 55, 52, 55, 62, 57},
-                {42, 50, 47, 31, 58, 60, 40}
+                {65, 56, 55, 52, 55, 62, 57}
+        };
+        int[][] arrayOfArrays2 = {
+                {66, 64, 58, 65, 71, 57, 60},
+                {57, 65, 65, 70, 72, 65, 51},
+                {42, 50, 47, 31, 58, 60, 40},
+                {55, 54, 60, 53, 59, 57, 61},
+                {65, 56, 55, 52, 55, 62, 57}
+        };
+        int[][] arrayOfArrays3 = {
+                {66, 64, 58, 65, 71, 57, 60},
+                {57, 65, 65, 70, 72, 65, 51},
+                {55, 54, 60, 53, 59, 57, 61},
+                {42, 50, 47, 31, 58, 60, 40},
+                {65, 56, 55, 52, 55, 62, 57}
         };
         int[] expected = new int[] {42, 50, 47, 31, 58, 60, 40};
-        int[] actual = Library.calcAoA(arrayOfArrays);
-        assertArrayEquals(actual, expected);
+        int[] actual1 = Library.calcAoA(arrayOfArrays1);
+        int[] actual2 = Library.calcAoA(arrayOfArrays2);
+        int[] actual3 = Library.calcAoA(arrayOfArrays3);
+        assertArrayEquals(actual1, expected);
+        assertArrayEquals(actual2, expected);
+        assertArrayEquals(actual3, expected);
     }
 }

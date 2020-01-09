@@ -36,9 +36,9 @@ public class Library {
         int[][] weeklyMonthTemperatures = {
                 {66, 64, 58, 65, 71, 57, 60},
                 {57, 65, 65, 70, 72, 65, 51},
+                {42, 50, 47, 31, 58, 60, 40},
                 {55, 54, 60, 53, 59, 57, 61},
-                {65, 56, 55, 52, 55, 62, 57},
-                {42, 50, 47, 31, 58, 60, 40}
+                {65, 56, 55, 52, 55, 62, 57}
         };
 
         System.out.println(Arrays.toString(calcAoA(weeklyMonthTemperatures)));
@@ -78,7 +78,7 @@ public class Library {
         int [] newArr = new int [arr[0].length];
         float lowestAvg = calcAverage(arr[0]);
         for(int[] i : arr){
-            if(calcAverage(i) < lowestAvg){
+            if(calcAverage(i) <= lowestAvg){
 //                System.out.println(Arrays.toString(i));
                 lowestAvg = calcAverage(i);
                 newArr = i;
