@@ -43,6 +43,31 @@ public class Library {
 
         System.out.println(Arrays.toString(calcAoA(weeklyMonthTemperatures)));
 
+        System.out.println("-----------------------------");
+
+        int[][] weeklyMonthTemperatures = {
+                {66, 64, 58, 65, 71, 57, 60},
+                {57, 65, 65, 70, 72, 65, 51},
+                {55, 54, 60, 53, 59, 57, 61},
+                {65, 56, 55, 52, 55, 62, 57}
+        };
+//        analyzeWeatherData(weeklyMonthTemperatures);
+        System.out.println(analyzeWeatherData(weeklyMonthTemperatures));
+
+        System.out.println("-----------------------------");
+
+        List<String> votes = new ArrayList<>();
+        votes.add("Bush");
+        votes.add("Bush");
+        votes.add("Bush");
+        votes.add("Shrub");
+        votes.add("Hedge");
+        votes.add("Shrub");
+        votes.add("Bush");
+        votes.add("Hedge");
+        votes.add("Bush");
+        System.out.println(tally(votes));
+
 
     }
 
@@ -85,6 +110,47 @@ public class Library {
             }
         }
         return newArr;
+    }
+
+    public static String analyzeWeatherData(int [] [] aOa){
+        HashSet<Integer> temp = new HashSet<>();
+        int min = 120;
+        int max = 0;
+        String notSawStr = "";
+        for(int [] arr : aOa){
+            for(int i : arr){
+                temp.add(i);
+                if(i > max) max = i;
+                else if (i < min) min = i;
+            }
+        }
+        for(int i = min; i < max; i++){
+            if(!temp.contains(i)){
+                notSawStr += "Never saw temperature : " + i +"\n";
+
+            }
+        }
+        return String.format("High:%d \nLow: %d \n%s", max, min, notSawStr);
+    }
+
+    public static String tally(List<String> list){
+        String winner = "";
+        int voteCount = 0;
+        HashMap<String, Integer> timesVoted = new HashMap<>();
+
+        //put the names into the hashmap
+        for (String j : list){
+            timesVoted.put(j,0);
+        }
+
+        for(String i : list){
+            if(timesVoted.get(i) > voteCount) {
+                voteCount = timesVoted.get(i) +1;
+                winner = i;
+            }else timesVoted.put(i, timesVoted.get(i) + 1);
+        }
+
+        return winner;
     }
 
 
