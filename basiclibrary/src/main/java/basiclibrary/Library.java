@@ -4,6 +4,13 @@
 package basiclibrary;
 
 import java.util.Arrays;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.ArrayList;
 
 
 public class Library {
@@ -33,7 +40,7 @@ public class Library {
 
 
         System.out.println("Array of Arrays");
-        int[][] weeklyMonthTemperatures = {
+        int[][] weeklyMonthTemperatures1 = {
                 {66, 64, 58, 65, 71, 57, 60},
                 {57, 65, 65, 70, 72, 65, 51},
                 {42, 50, 47, 31, 58, 60, 40},
@@ -41,7 +48,32 @@ public class Library {
                 {65, 56, 55, 52, 55, 62, 57}
         };
 
-        System.out.println(Arrays.toString(calcAoA(weeklyMonthTemperatures)));
+        System.out.println(Arrays.toString(calcAoA(weeklyMonthTemperatures1)));
+
+        System.out.println("-----------------------------");
+
+        int[][] weeklyMonthTemperatures = {
+                {66, 64, 58, 65, 71, 57, 60},
+                {57, 65, 65, 70, 72, 65, 51},
+                {55, 54, 60, 53, 59, 57, 61},
+                {65, 56, 55, 52, 55, 62, 57}
+        };
+//        analyzeWeatherData(weeklyMonthTemperatures);
+        System.out.println(analyzeWeatherData(weeklyMonthTemperatures));
+
+        System.out.println("-----------------------------");
+
+        List<String> votes = new ArrayList<>();
+        votes.add("Bush");
+        votes.add("Bush");
+        votes.add("Bush");
+        votes.add("Shrub");
+        votes.add("Hedge");
+        votes.add("Shrub");
+        votes.add("Bush");
+        votes.add("Hedge");
+        votes.add("Bush");
+        System.out.println(tally(votes));
 
 
     }
@@ -86,6 +118,48 @@ public class Library {
         }
         return newArr;
     }
+
+    public static String analyzeWeatherData(int [] [] aOa){
+        HashSet<Integer> temp = new HashSet<>();
+        int min = 120;
+        int max = 0;
+        String notSawStr = "";
+        for(int [] arr : aOa){
+            for(int i : arr){
+                min = Math.min(min,i);
+                max = Math.max(max,i);
+                temp.add(i);
+            }
+        }
+        for(int i = min; i < max; i++){
+            if(!temp.contains(i)){
+                notSawStr += "Never saw temperature : " + i +"\n";
+
+            }
+        }
+        return String.format("High: %d\nLow: %d\n%s", max, min, notSawStr);
+    }
+
+    public static String tally(List<String> list){
+        String winner = "";
+        int voteCount = 0;
+        HashMap<String, Integer> timesVoted = new HashMap<>();
+
+        //put the names into the hashmap
+        for (String j : list){
+            timesVoted.put(j,0);
+        }
+
+        for(String i : list){
+            if(timesVoted.get(i) > voteCount) {
+                voteCount = timesVoted.get(i) +1;
+                winner = i;
+            }else timesVoted.put(i, timesVoted.get(i) + 1);
+        }
+
+        return winner;
+    }
+
 
 
 

@@ -5,7 +5,13 @@ package basiclibrary;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Scanner;
 
 import static org.junit.Assert.*;
 
@@ -69,4 +75,42 @@ public class LibraryTest {
         assertArrayEquals(actual2, expected);
         assertArrayEquals(actual3, expected);
     }
+
+    @Test public void testMaps(){
+        int [][] data = {{1,2}, {3,7,8}};
+        assertEquals("should find that 4, 5 and 6 are missing", "High: 8\nLow: 1\nNever saw temperature : 4\nNever saw temperature : 5\nNever saw temperature : 6\n", Library.analyzeWeatherData(data));
+    }
+
+    @Test public void testMapLongArray(){
+        int[][] weeklyMonthTemperatures = {
+                {66, 64, 58, 65, 71, 57, 60},
+                {57, 65, 65, 70, 72, 65, 51},
+                {55, 54, 60, 53, 59, 57, 61},
+                {65, 56, 55, 52, 55, 62, 57}
+        };
+        String expected = new String("High: 72\n" +
+                "Low: 51\n" +
+                "Never saw temperature : 63\n" +
+                "Never saw temperature : 67\n" +
+                "Never saw temperature : 68\n" +
+                "Never saw temperature : 69\n");
+        assertEquals(expected, Library.analyzeWeatherData((weeklyMonthTemperatures)));
+    }
+
+    @Test public void tallyTest(){
+        ArrayList<String> votes = new ArrayList<>();
+        votes.add("Bush");
+        votes.add("Bush");
+        votes.add("Bush");
+        votes.add("Shrub");
+        votes.add("Hedge");
+        votes.add("Shrub");
+        votes.add("Bush");
+        votes.add("Hedge");
+        votes.add("Bush");
+        String result = "Bush";
+        assertEquals(result, Library.tally(votes));
+    }
+
+
 }
