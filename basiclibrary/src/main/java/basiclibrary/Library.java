@@ -4,6 +4,13 @@
 package basiclibrary;
 
 import java.util.Arrays;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.ArrayList;
 
 
 public class Library {
@@ -33,7 +40,7 @@ public class Library {
 
 
         System.out.println("Array of Arrays");
-        int[][] weeklyMonthTemperatures = {
+        int[][] weeklyMonthTemperatures1 = {
                 {66, 64, 58, 65, 71, 57, 60},
                 {57, 65, 65, 70, 72, 65, 51},
                 {42, 50, 47, 31, 58, 60, 40},
@@ -41,7 +48,7 @@ public class Library {
                 {65, 56, 55, 52, 55, 62, 57}
         };
 
-        System.out.println(Arrays.toString(calcAoA(weeklyMonthTemperatures)));
+        System.out.println(Arrays.toString(calcAoA(weeklyMonthTemperatures1)));
 
         System.out.println("-----------------------------");
 
@@ -119,9 +126,9 @@ public class Library {
         String notSawStr = "";
         for(int [] arr : aOa){
             for(int i : arr){
+                min = Math.min(min,i);
+                max = Math.max(max,i);
                 temp.add(i);
-                if(i > max) max = i;
-                else if (i < min) min = i;
             }
         }
         for(int i = min; i < max; i++){
@@ -130,7 +137,7 @@ public class Library {
 
             }
         }
-        return String.format("High:%d \nLow: %d \n%s", max, min, notSawStr);
+        return String.format("High: %d\nLow: %d\n%s", max, min, notSawStr);
     }
 
     public static String tally(List<String> list){
@@ -152,6 +159,7 @@ public class Library {
 
         return winner;
     }
+
 
 
 

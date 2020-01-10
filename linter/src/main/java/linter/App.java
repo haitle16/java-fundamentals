@@ -26,12 +26,10 @@ public class App {
         try {
             Scanner gatesScanner = new Scanner(new File("resources/gates.js"));
             while(gatesScanner.hasNextLine()){
-//                System.out.println(gatesScanner.nextLine());
                 lineNumber++;
                 String line = gatesScanner.nextLine();
                 if(line.length() > 0 ) {
-//                    System.out.println(gatesScanner.nextLine());
-                    if (!line.endsWith(";") && !line.endsWith("{") && !line.endsWith("}")) {
+                    if (!line.endsWith(";") && !line.endsWith("{") && !line.endsWith("}") && !line.isEmpty() && !line.contains("else") && !line.contains("if")) {
                         System.out.println("Line " + lineNumber + " Missing semicolon.");
                     }
                 }

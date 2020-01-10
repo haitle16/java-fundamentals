@@ -1,7 +1,7 @@
 ![CF](http://i.imgur.com/7v5ASc8.png) LAB02
 =================================================
 
-## Arrays, Loops, Imports, ArrayLists
+## Arrays, Loops, Imports, ArrayLists, Maps, and File I/O
 
 ### Author: Hai Le
 
@@ -14,7 +14,12 @@
   * Write a method that accepts an array of integers and calculates and returns the average of all the values in the array.
 * Array of Arrays
   * Given an array of arrays calculate the average value for each array and return the array with the lowest average.
-
+* Analyzing Weather Data
+  *Use the October Seattle weather data above. Find maximum and minimum temperature.
+* Tally Election
+  * Write a function called tally that accepts a List of Strings representing votes and returns one string to show what got the most votes.
+* File I/O
+  * Manipulate a given js file and find the correct errors.
 
 #### Tests
 * Rolling dice method test
@@ -25,4 +30,12 @@
   * Tested with an array parameter and checked the expected value to equal the output.
 * Calculate lowest average in array of array method
   * Tested with an array of array and assure the expected array matches output array.
+* Analyzing weather data method test
+  * Tested with both long arrays and short arrays and checked the expected value.
+* Tally Election
+  * Tested through with array list and proper values, checked the return value with HashMap.
+* File I/O
+  * Iterate through the js file and throw all the errors received.
+  
+  
  
