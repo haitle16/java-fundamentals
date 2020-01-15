@@ -9,40 +9,40 @@ public class Restaurant {
     List<Review> reviews;
     String name;
     double rating;
-    String priceCat;
-//    boolean isStarsAccurate;
+    int priceCat;
+    boolean isStarsAccurate;
 
-    public Restaurant( String name, double rating, String priceCat){
+    public Restaurant( String name, double rating, int priceCat){
         reviews = new LinkedList<>();
         this.name = name;
         this.rating = rating;
         this.priceCat = priceCat;
-//        this.isStarsAccurate = false;
+        this.isStarsAccurate = false;
 
     }
 
     public String toString(){
-        return "Restaurant name: "+ this.name +" | Rating: "+ this.rating + " | Price Category " + this.priceCat;
+        return "Restaurant name: "+ this.name +" | Rating: "+ this.rating + " | Price Category " + this.priceCat + "$";
     }
 
     public void addReview(Review r){
         this.reviews.add(r);
         r.restaurant = this;
-//        this.isStarsAccurate = false;
+        this.isStarsAccurate = false;
     }
 
-//    public double updateRatings(){
-//        if(!this.isStarsAccurate){
-//            int total = 0;
-//            for( Review r : this.reviews){
-//            total += r.revRating;
-//        }
-//            this.rating = (double) total / (double) this.reviews.size();
-//            this.isStarsAccurate = true;
-//
-//
-//        }
-//        return this.rating;
-//    }
+    public double updateRatings(){
+        if(!this.isStarsAccurate){
+            int total = 0;
+            for( Review r : this.reviews){
+            total += r.revRating;
+        }
+            this.rating = (double) total / (double) this.reviews.size();
+            this.isStarsAccurate = true;
+
+
+        }
+        return this.rating;
+    }
 
 }

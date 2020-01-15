@@ -2,6 +2,7 @@ package inheritance;
 
 public class Review {
     Restaurant restaurant;
+    Shop shop;
     double revRating;
     String body;
     String author;
