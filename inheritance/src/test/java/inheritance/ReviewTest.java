@@ -11,13 +11,13 @@ public class ReviewTest {
 
     @Before
     public void setUp() throws Exception{
-        review = new Review(2, "This restaurant needs to improve their custumer service!", "Johnny Shoemaker");
+        review = new Review(2.0, "This restaurant needs to improve their customer service!", "Johnny Shoemaker");
     }
 
     @Test
     public void reviewConsTest(){
-        assertEquals(2, review.revRating);
-        assertEquals("This restaurant needs to improve their custumer service!", review.body);
+        assertEquals(2.0, review.revRating,0.0);
+        assertEquals("This restaurant needs to improve their customer service!", review.body);
         assertEquals("Johnny Shoemaker", review.author);
     }
 }
