@@ -16,6 +16,7 @@ public class TheaterTest {
         theater = new Theater("AMC Southcenter", "");
         theater.addMovie("Doom");
         theater.addMovie("Ironman");
+        theater.addReview(new Review(5,"This theater is awesome!", "Jay Jay"));
     }
 
     @Test
@@ -29,6 +30,22 @@ public class TheaterTest {
     public void theaterRemoveMovieTest() {
         theater.removeMovie("Ironman");
         assertEquals("Doom  ", theater.movies);
+    }
+
+    @Test
+    public void addReviewTest(){
+        String[] expected = {"received 5.0 stars| text: This theater is awesome!| author: Jay Jay"};
+        assertEquals(Arrays.toString(expected), theater.reviews.toString());
+        theater.addReview(new Review(4.0, "This theater cleanliness is exceptional", "Cait Rubin", "Doom"));
+        String expectedMovieName = "[received 5.0 stars| text: This theater is awesome!| author: Jay Jay, received 4.0 stars| text: This theater cleanliness is exceptional| author: Cait Rubin| Movie Name: Doom]";
+        assertEquals(expectedMovieName, theater.reviews.toString());
+    }
+
+    @Test
+    public void updateRatingTest(){
+        theater.addReview(new Review(4.0, "This theater cleanliness is exceptional", "Cait Rubin", "Doom"));
+        System.out.println(theater.reviews);
+        assertEquals(4.5, theater.updateRatings(), 0.0001);
     }
 
 }
