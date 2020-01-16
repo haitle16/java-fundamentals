@@ -20,4 +20,5 @@ public class ReviewTest {
         assertEquals("This restaurant needs to improve their customer service!", review.body);
         assertEquals("Johnny Shoemaker", review.author);
     }
+
 }
